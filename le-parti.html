@@ -1,0 +1,276 @@
+<!DOCTYPE html> <html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Le parti · PEP</title><meta content="Le Parti de l'Émancipation Populaire porte un projet de refondation nationale d'Haïti." name="description"/><meta content="#08111e" name="theme-color"/><meta content="website" property="og:type"/><meta content="fr_HT" property="og:locale"/><meta content="PEP" property="og:site_name"/><link href="assets/logo.png" rel="icon"/><link href="assets/styles.css" rel="stylesheet"/><style>
+/* ── Organigramme styles ── */
+.org-section{padding:84px 0}
+.org-wrapper{overflow-x:auto;padding-bottom:8px}
+.org-canvas{ position:relative; min-width:900px; padding:0 20px 20px;
+}
+/* Flex tree layout */
+.org-row{display:flex;justify-content:center;gap:16px;position:relative;z-index:2}
+.org-spacer{height:44px;position:relative;z-index:1}
+/* Each box */
+.org-node{ background:var(--org-box-bg); border:1.5px solid var(--line2); border-radius:16px;padding:12px 16px; text-align:center;min-width:148px;max-width:190px; box-shadow:var(--shadow-soft);cursor:default;transition:.2s ease; flex-shrink:0;
+}
+.org-node:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.org-node.tier-0{ border-color:var(--gold);min-width:220px; background:linear-gradient(135deg,rgba(243,207,118,.16),rgba(109,180,255,.10));
+}
+.org-node.tier-1{border-color:rgba(109,180,255,.4)}
+.org-node.tier-2{border-color:rgba(109,180,255,.2)}
+.org-node.tier-3{border-color:rgba(109,180,255,.12)}
+.org-icon{font-size:1.2rem;margin-bottom:6px;line-height:1}
+.org-title{display:block;font-size:.78rem;font-weight:800;letter-spacing:.04em;line-height:1.35;color:var(--ink)}
+.org-sub{display:block;font-size:.7rem;color:var(--muted);margin-top:4px;line-height:1.4}
+/* SVG connector overlay */
+.org-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+@media (max-width:760px){ .org-section{padding:56px 0} .org-wrapper{overflow:visible;padding-bottom:0} .org-canvas{min-width:0;padding:0} .org-row{flex-wrap:wrap;gap:12px} .org-spacer{height:16px} .org-node{min-width:0;max-width:none;flex:1 1 calc(50% - 12px);padding:12px 12px} .org-node.tier-0{flex-basis:100%;min-width:0} .org-node.tier-3{flex-basis:calc(50% - 12px)} .org-svg{display:none} #organigramme .cards-4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){ .org-node,.org-node.tier-0,.org-node.tier-3{flex-basis:100%} #organigramme .cards-4{grid-template-columns:1fr}
+}
+</style></head><body>
+<header class="site-header"><div class="container"><div class="header-inner"><a class="brand" href="index.html"><img alt="Logo PEP" class="brand-mark" src="assets/logo.png"/><div class="brand-copy"><strong>Parti de l'Émancipation Populaire</strong><span>Projet politique de refondation nationale</span></div></a><nav class="main-nav"><div class="dropdown"><a class="dropbtn" href="le-parti.html">Le parti</a><div class="dropdown-panel"><a href="le-parti.html#vision"><strong>Vision</strong><span>La ligne politique, l'ambition historique et l'architecture du mouvement.</span></a><a href="le-parti.html#organisation"><strong>Organisation</strong><span>Structure nationale, locale et diasporique orientée vers l'action.</span></a><a href="le-parti.html#organigramme"><strong>Organigramme</strong><span>La hiérarchie et les pôles qui structurent le parti.</span></a><a href="le-parti.html#leadership"><strong>Leadership</strong><span>L'équipe dirigeante, les rôles clés et les visages du parti.</span></a><a href="le-parti.html#commissions"><strong>Commissions</strong><span>Les six commissions opérationnelles qui relient pensée et action populaire.</span></a><a href="le-parti.html#methodes"><strong>Méthode</strong><span>Formation, implantation, travail programmatique et discipline collective.</span></a></div></div><div class="dropdown"><a class="dropbtn" href="actualites.html">Actualités</a><div class="dropdown-panel"><a href="actualites.html#communiques"><strong>Communiqués</strong><span>Les prises de position et annonces publiques du PEP.</span></a><a href="actualites.html#tribunes"><strong>Tribunes</strong><span>Analyses, textes d'orientation et propositions de fond.</span></a><a href="actualites.html#campagnes"><strong>Campagnes</strong><span>Actions citoyennes, mobilisation civique et pédagogie politique.</span></a></div></div><div class="dropdown"><a class="dropbtn" href="programme.html">Programme</a><div class="dropdown-panel"><a href="programme.html#cap"><strong>Cap 2035</strong><span>Une vision décennale pour sortir de la dépendance et du désordre.</span></a><a href="axe-economie.html"><strong>Économie productive</strong><span>Souveraineté alimentaire, industrie, emploi et territoires.</span></a><a href="axe-services-publics.html"><strong>Services publics</strong><span>École, santé, eau, énergie, sécurité et mobilité.</span></a><a href="axe-justice.html"><strong>Justice</strong><span>État de droit, lutte contre l'impunité et confiance institutionnelle.</span></a><a href="axe-bonne-gouvernance.html"><strong>Bonne gouvernance</strong><span>Transparence, efficacité et reddition des comptes.</span></a></div></div><div class="dropdown"><a class="dropbtn" href="agir.html">Agir</a><div class="dropdown-panel"><a href="adherer.html"><strong>Adhérer</strong><span>Rejoindre l’organisation, intégrer une section et prendre part au travail politique.</span></a><a href="donner.html"><strong>Donner</strong><span>Soutenir l’action du parti et financer l’implantation, la formation et les campagnes.</span></a></div></div><a href="contact.html">Contact</a></nav><div class="lang-switch"><a class="active" href="le-parti.html">FR</a><a href="ht/le-parti.html">KR</a></div><button aria-label="Menu" class="mobile-toggle" data-label-close="Fermer" data-label-open="Menu" data-mobile-toggle="">☰</button><div class="mobile-panel" data-mobile-panel="" data-open="false"><div class="mobile-card"><a href="le-parti.html">Le parti</a><a href="actualites.html">Actualités</a><a href="programme.html">Programme</a><a href="agir.html">Agir</a><a href="contact.html">Contact</a><div class="mobile-lang"><a href="le-parti.html">FR</a><a href="ht/le-parti.html">KR</a></div></div></div></div></div></header>
+<main>
+<section class="hero hero-single page-two-col"><div class="container"><div class="hero-shell">
+<div class="hero-main reveal">
+<span class="eyebrow">Ce que PEP apporte</span>
+<h1>Une autre façon de faire de la politique</h1>
+<p class="lead">Viens militer dans un parti qui n’a participé ni de près ni de loin au chaos actuel, et agir pour faire naître le changement dont nous rêvons tous.</p>
+<div class="btn-row"><a class="btn btn-primary" href="#vision">Découvrir notre vision</a><a class="btn btn-secondary" href="#organigramme">Voir notre organisation</a></div>
+</div> </div></div></section>
+<section class="section" id="vision"><div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Vision</span><h2>Faire émerger un État utile et une société organisée.</h2></div>
+<p>Le PEP est né d'un constat simple et douloureux : la masse paysanne haïtienne, qui a porté le pays à bout de bras depuis l'indépendance de 1804, n'a jamais reçu la reconnaissance ni les moyens qu'elle mérite. Notre vision est de corriger cette injustice historique avec méthode, transparence et efficacité - en garantissant enfin l'accès à l'école, à l'eau courante, à l'électricité, aux routes et à un système de santé digne du 21e siècle.</p>
+</div>
+<div class="grid cards-3">
+<div class="card article-card reveal"><h3>Réconcilier État et peuple</h3><p>Reconstruire la légitimité de l'action publique par des résultats visibles, des procédures lisibles et une présence territoriale régulière. L'État doit être au service de tous, et en particulier de ceux qui ont le plus longtemps été laissés pour compte dans les zones rurales.</p></div>
+<div class="card article-card reveal"><h3>Passer de la survie à la projection</h3><p>Créer un horizon collectif autour du travail, de l'éducation, de la sécurité et de la dignité matérielle. Chaque enfant paysan doit pouvoir accéder à une école de qualité, et chaque famille doit avoir accès à l'eau potable, à l'électricité et à des soins de santé accessibles.</p></div>
+<div class="card article-card reveal"><h3>Refuser la politique de façade</h3><p>Promouvoir un langage politique exact, des engagements mesurables et une discipline d'exécution. La transparence et l'efficacité ne sont pas des options : elles sont le socle de toute action du PEP, du financement jusqu'aux résultats sur le terrain.</p></div>
+</div>
+</div></section>
+<!-- ══ ORGANIGRAMME ══════════════════════════════════════════ -->
+<section class="org-section" id="organigramme"><div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Structure du parti</span><h2>Organigramme du PEP.</h2></div>
+<p>Une architecture en réseau qui articule gouvernance nationale, coordination thématique et enracinement territorial.</p>
+</div>
+<div class="org-wrapper reveal">
+<div class="org-canvas" id="org-canvas">
+<!-- SVG connector overlay rendered by JS -->
+<svg aria-hidden="true" class="org-svg" id="org-lines"></svg>
+<!-- Tier 0: Congrès National -->
+<div class="org-row" style="margin-bottom:0">
+<div class="org-node tier-0" id="org-congres">
+<div class="org-icon">🏛️</div>
+<span class="org-title">Congrès National du Parti</span>
+<span class="org-sub">Organe souverain · Réunit les délégués de toutes les sections</span>
+</div>
+</div>
+<div class="org-spacer"></div>
+<!-- Tier 1: Bureau Politique + Commission de Contrôle -->
+<div class="org-row">
+<div class="org-node tier-1" id="org-bureau">
+<div class="org-icon">⚖️</div>
+<span class="org-title">Bureau Politique National</span>
+<span class="org-sub">Direction stratégique et arbitrage</span>
+</div>
+<div class="org-node tier-1" id="org-commission">
+<div class="org-icon">🔍</div>
+<span class="org-title">Commission de Contrôle</span>
+<span class="org-sub">Éthique, discipline et transparence</span>
+</div>
+<div class="org-node tier-1" id="org-diaspora">
+<div class="org-icon">🌍</div>
+<span class="org-title">Coordination Diaspora</span>
+<span class="org-sub">Réseau international des membres</span>
+</div>
+</div>
+<div class="org-spacer"></div>
+<!-- Tier 2: Secrétariat Général + Sections -->
+<div class="org-row">
+<div class="org-node tier-2" id="org-sg">
+<div class="org-icon">🗂️</div>
+<span class="org-title">Secrétariat Général</span>
+<span class="org-sub">Coordination opérationnelle quotidienne</span>
+</div>
+<div class="org-node tier-2" id="org-sections">
+<div class="org-icon">📍</div>
+<span class="org-title">Sections Départementales</span>
+<span class="org-sub">10 départements · Présence territoriale</span>
+</div>
+<div class="org-node tier-2" id="org-formation">
+<div class="org-icon">📚</div>
+<span class="org-title">Institut de Formation</span>
+<span class="org-sub">Formation des cadres et militants</span>
+</div>
+</div>
+<div class="org-spacer"></div>
+<!-- Tier 3: Pôles thématiques -->
+<div class="org-row">
+<div class="org-node tier-3" id="org-eco">
+<div class="org-icon">💼</div>
+<span class="org-title">Pôle Économie</span>
+<span class="org-sub">Agriculture · Industrie · Emploi</span>
+</div>
+<div class="org-node tier-3" id="org-social">
+<div class="org-icon">🏥</div>
+<span class="org-title">Pôle Services Publics</span>
+<span class="org-sub">Santé · Éducation · Eau · Énergie</span>
+</div>
+<div class="org-node tier-3" id="org-justice">
+<div class="org-icon">🏛️</div>
+<span class="org-title">Pôle Justice &amp; Droit</span>
+<span class="org-sub">État de droit · Lutte contre l'impunité</span>
+</div>
+<div class="org-node tier-3" id="org-gouv">
+<div class="org-icon">📊</div>
+<span class="org-title">Pôle Gouvernance</span>
+<span class="org-sub">Transparence · Reddition des comptes</span>
+</div>
+<div class="org-node tier-3" id="org-jeunesse">
+<div class="org-icon">🎓</div>
+<span class="org-title">Pôle Jeunesse</span>
+<span class="org-sub">Organisation · Éducation civique</span>
+</div>
+</div>
+</div><!-- org-canvas -->
+</div><!-- org-wrapper -->
+<!-- Legend -->
+<div class="grid cards-4" style="margin-top:32px">
+<div class="card pad reveal" style="text-align:center">
+<div style="font-size:1.5rem;margin-bottom:8px">🏛️</div>
+<h4 style="font-size:.8rem;letter-spacing:.08em">Congrès National</h4>
+<p style="font-size:.85rem;margin-top:6px">L'organe souverain qui définit la ligne politique et élit les dirigeants.</p>
+</div>
+<div class="card pad reveal" style="text-align:center">
+<div style="font-size:1.5rem;margin-bottom:8px">⚖️</div>
+<h4 style="font-size:.8rem;letter-spacing:.08em">Bureau Politique</h4>
+<p style="font-size:.85rem;margin-top:6px">Direction stratégique entre deux congrès. Arbitre, oriente, décide.</p>
+</div>
+<div class="card pad reveal" style="text-align:center">
+<div style="font-size:1.5rem;margin-bottom:8px">📍</div>
+<h4 style="font-size:.8rem;letter-spacing:.08em">Sections Locales</h4>
+<p style="font-size:.85rem;margin-top:6px">Ancrage dans les 10 départements et communes pour une action de proximité.</p>
+</div>
+<div class="card pad reveal" style="text-align:center">
+<div style="font-size:1.5rem;margin-bottom:8px">💼</div>
+<h4 style="font-size:.8rem;letter-spacing:.08em">Pôles Thématiques</h4>
+<p style="font-size:.85rem;margin-top:6px">Équipes spécialisées qui produisent la doctrine sectorielle du parti.</p>
+</div>
+</div>
+</div></section>
+<!-- ══ END ORGANIGRAMME ══════════════════════════════════════ -->
+<section class="section" id="leadership"><div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Leadership</span><h2>Une équipe dirigeante identifiable, crédible et prête à parler au pays.</h2></div>
+<p>Cette section présente les portraits officiels et les biographies courtes des principaux responsables du parti.</p>
+</div>
+<div class="leadership-grid">
+<article class="card pad leader-card reveal"><div class="leader-photo"><img alt="Portrait du secrétaire exécutif" src="assets/leader-p.png"/></div><div><span class="leader-role">Secrétaire exécutif</span><h3 class="leader-name">REGINALDO CORVIL</h3><p class="leader-note">Coordination politique et pilotage opérationnel du parti.</p></div></article>
+<article class="card pad leader-card reveal"><div class="leader-photo"><img alt="Portrait du trésorier" src="assets/Daniel.jpg"/></div><div><span class="leader-role">Trésorier</span><h3 class="leader-name">DANIEL JOACHIM</h3><p class="leader-note">Gestion financière, conformité interne et transparence des ressources.</p></div></article>
+<article class="card pad leader-card reveal"><div class="leader-photo"><img alt="Portrait du porte-parole" src="assets/manasse.png"/></div><div><span class="leader-role">Porte-parole</span><h3 class="leader-name">MANASSE SAMEDY DEVERT</h3><p class="leader-note">Expression publique, argumentaire et relation avec les médias.</p></div></article>
+<article class="card pad leader-card reveal"><div class="leader-photo"><img alt="Portrait du secrétaire du bureau politique" src="assets/secretaire_pol.png"/></div><div><span class="leader-role">Secrétaire du bureau politique</span><h3 class="leader-name">CILY LEFORT</h3><p class="leader-note">Suivi des décisions, continuité organique et préparation des instances.</p></div></article>
+</div>
+</div></section>
+<section class="section" id="commissions"><div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Commissions</span><h2>Six commissions au cœur de l'action populaire.</h2></div>
+<p>Les commissions du PEP sont les organes de travail concret qui relient la pensée politique à l'action sur le terrain. Elles incarnent l'alliance stratégique entre la jeunesse urbaine et la masse paysanne - pilier historique de la nation haïtienne.</p>
+</div>
+<div class="grid cards-2">
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 1</span>
+<h3>Réforme Agraire et Souveraineté Alimentaire</h3>
+<p>C'est le cœur du projet : lier les besoins techniques des paysans aux aspirations politiques des jeunes. La terre haïtienne, travaillée depuis des générations par des familles paysannes sans titre ni protection, doit enfin leur appartenir de droit.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Étudier la redistribution des terres, lutter contre l'accaparement par les grands propriétaires (grandons) et promouvoir des coopératives de production à taille humaine.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Créer des <em>Brigades Agricoles de Jeunes</em> qui participent aux récoltes et à la reforestation en échange d'une formation politique et d'un partage équitable des ressources.</div></div>
+</div>
+</div>
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 2</span>
+<h3>Éducation Populaire et Formation Idéologique</h3>
+<p>Le marxisme doit être "traduit" dans la réalité haïtienne - un <em>marxisme-kreyòl</em> - pour ne pas paraître étranger à ceux qu'il prétend libérer. L'éducation est le premier outil d'émancipation d'un peuple.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Organiser des cercles d'études sur l'histoire des luttes sociales en Haïti : de 1804 aux mouvements paysans comme les Cacos, en passant par les résistances populaires contemporaines.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Utiliser la radio communautaire et les <em>konbit</em> (travaux collectifs) pour diffuser les idées - les jeunes instruits apprennent les savoirs ancestraux paysans autant qu'ils enseignent la théorie.</div></div>
+</div>
+</div>
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 3</span>
+<h3>Économie Solidaire et Logistique</h3>
+<p>Le capitalisme marchand étouffe le paysan haïtien via des intermédiaires - les <em>spéculateurs</em> - qui captent l'essentiel de la valeur produite par les travailleurs de la terre. Cette commission vise à court-circuiter ces réseaux d'exploitation.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Créer des circuits directs de distribution des produits agricoles vers les quartiers populaires urbains, garantissant un prix juste aux producteurs et des denrées abordables aux familles.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Les jeunes prennent en charge la logistique, le transport et la vente à prix équitable dans les villes, assurant un revenu décent aux paysans et de la nourriture accessible aux familles urbaines.</div></div>
+</div>
+</div>
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 4</span>
+<h3>Services Sociaux et Entraide - <em>Sante ak Edikasyon</em></h3>
+<p>Dans un État défaillant, le parti doit démontrer par l'exemple l'efficacité de l'organisation collective. Accès aux soins, eau courante, électricité, routes praticables : ces services fondamentaux du 21e siècle doivent cesser d'être des privilèges.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Mettre en place des cliniques mobiles et des programmes d'alphabétisation fonctionnelle dans les zones rurales les plus défavorisées, en priorité là où l'État est absent.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Mobiliser les étudiants en médecine et en éducation pour des stages militants en zone rurale, renforçant la solidarité de classe par l'action concrète et mesurable.</div></div>
+</div>
+</div>
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 5</span>
+<h3>Défense Populaire et Droits Humains</h3>
+<p>Face à l'insécurité grandissante et à l'arbitraire des groupes armés comme de la répression d'État, la protection des citoyens ordinaires - paysans et jeunes militants - est une priorité absolue et non négociable.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Documenter les exactions contre les paysans et les militants, constituer des archives juridiques et organiser l'autodéfense communautaire dans le respect du droit.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Unir les réseaux de vigilance des quartiers urbains et les organisations de défense paysannes pour protéger les territoires et les membres du parti face à toute forme de répression.</div></div>
+</div>
+</div>
+<div class="card pad reveal">
+<span class="eyebrow" style="color:var(--gold)">Commission 6</span>
+<h3>Culture et Communication Prolétarienne</h3>
+<p>La lutte culturelle est primordiale pour contrer l'hégémonie des idées néolibérales. Le <em>Lakou</em> - espace communautaire traditionnel - est un lieu de résistance à valoriser. Les arts portent le message là où la parole politique ne pénètre pas.</p>
+<div class="table-like" style="margin-top:16px">
+<div class="table-row"><strong>Mission</strong><div>Valoriser le Lakou comme espace de résistance et utiliser les arts - Rara, Slam, Graffiti - pour porter le message de l'alliance paysans-jeunesse à travers tout le pays.</div></div>
+<div class="table-row"><strong>Lien Jeunes-Paysans</strong><div>Fusionner la culture urbaine engagée (musique, slam, médias alternatifs) avec les traditions paysannes pour créer une identité révolutionnaire haïtienne moderne, unifiée et fière de ses racines.</div></div>
+</div>
+</div>
+</div>
+</div></section>
+<section class="section-tight" id="organisation"><div class="container"><div class="grid story-grid">
+<div class="card story-card reveal">
+<span class="eyebrow">Organisation</span>
+<h3>Une architecture en réseau.</h3>
+<div class="table-like">
+<div class="table-row"><strong>Sections locales</strong><div>Ancrage dans les communes et départements, écoute des besoins, actions de proximité.</div></div>
+<div class="table-row"><strong>Coordination nationale</strong><div>Définition du cap, arbitrage stratégique et suivi des priorités.</div></div>
+<div class="table-row"><strong>Pôles thématiques</strong><div>Économie, agriculture, jeunesse, institutions, services publics, sécurité, diaspora.</div></div>
+</div>
+</div>
+<div class="card story-card reveal">
+<span class="eyebrow">Méthode</span>
+<h3>Former, documenter, agir.</h3>
+<div class="timeline">
+<div class="timeline-item"><span>Étape 1</span><p>Former les cadres et militants à une lecture claire de la crise et du programme.</p></div>
+<div class="timeline-item"><span>Étape 2</span><p>Produire des notes, tribunes, diagnostics et propositions directement exploitables.</p></div>
+<div class="timeline-item"><span>Étape 3</span><p>Organiser des campagnes ciblées sur des sujets concrets.</p></div>
+<div class="timeline-item"><span>Étape 4</span><p>Mesurer les avancées, corriger les angles morts et rendre compte publiquement.</p></div>
+</div>
+</div>
+</div></div></section>
+<section class="section" id="methodes"><div class="container">
+<div class="section-head reveal">
+<div><span class="eyebrow">Culture politique</span><h2>Une exigence de tenue et de clarté.</h2></div>
+<p>Le PEP doit apparaître comme une force sérieuse, lisible et patiente. Nous croyons que la masse paysanne haïtienne - qui a fait vivre ce pays depuis 1804 - mérite enfin un parti qui lui ressemble : rigoureux, honnête, et orienté vers des résultats concrets.</p>
+</div>
+<div class="grid cards-4">
+<div class="card join-card reveal"><h3>Écoute</h3><p>Partir du vécu des citoyens, notamment des paysans et des communautés populaires, sans flatter ni manipuler. La réalité du terrain guide nos priorités.</p></div>
+<div class="card join-card reveal"><h3>Exactitude</h3><p>Parler juste, documenter, éviter les effets de posture. Chaque engagement du PEP doit être mesurable et rendu public avec transparence.</p></div>
+<div class="card join-card reveal"><h3>Responsabilité</h3><p>Assumer les arbitrages et expliquer les choix. La reddition de comptes n'est pas une contrainte : c'est le socle de la confiance populaire que nous voulons mériter.</p></div>
+<div class="card join-card reveal"><h3>Durée</h3><p>Construire une force utile sur plusieurs années. Le changement réel - école accessible, eau courante, routes, santé - se construit dans la durée, pas dans les emballements électoraux.</p></div>
+</div>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-top"><div class="card footer-brand"><div class="footer-brand-head"><img alt="Logo PEP" src="assets/logo.png"/><div><h2>Parti de l'Émancipation Populaire</h2></div></div><div class="footer-brand-form"><strong class="join-title">Nous rejoindre</strong><div class="form-grid footer-join-grid"><form action="https://docs.google.com/forms/d/e/1FAIpQLSfBLTOJTvLNHQZLtU7jEUzNg2COirIiorY3R2ASRNzG5oWxWQ/formResponse" class="google-form" data-success-message="Votre demande a bien été envoyée." method="POST" novalidate="" target="hidden_iframe_join"><div class="field"><label>Nom complet</label><input name="entry.2113700934" placeholder="Votre nom complet" required="" type="text"/></div><div class="field"><label>Téléphone</label><input name="entry.848673678" placeholder="Votre numéro" required="" type="text"/></div><div class="field"><label>Email</label><input name="entry.1206178905" placeholder="email@exemple.org" required="" type="email"/></div><div class="field"><label>Zone</label><select name="entry.1768118935" required=""><option>Ouest</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Sud</option><option>Sud-Est</option><option>Centre</option><option>Artibonite</option><option>Grand'Anse</option><option>Nippes</option><option>Diaspora - Amériques</option><option>Diaspora - Europe</option><option>Diaspora - Autre</option></select></div><div class="field full"><button class="btn btn-primary" type="submit">Adhérer</button></div></form><iframe class="form-response-frame" name="hidden_iframe_join" title="footer"></iframe></div></div></div><div class="card footer-col"><strong>Explorer</strong><div class="footer-links"><a href="le-parti.html">Le parti</a><a href="programme.html">Programme</a><a href="actualites.html">Actualités</a><a href="agir.html">Agir</a><a href="contact.html">Contact</a></div></div><div class="card footer-col"><strong>Ressources</strong><div class="footer-links"><a href="axe-economie.html">Économie</a><a href="axe-services-publics.html">Services publics</a><a href="axe-justice.html">Justice</a><a href="axe-bonne-gouvernance.html">Bonne gouvernance</a><a href="mentions-legales.html">Mentions légales</a></div></div></div><div class="footer-bottom"><span>© <span data-year=""></span> Parti de l'Émancipation Populaire. Tous droits réservés.</span><div class="footer-mini-links"><a href="contact.html">Contact</a><a href="mentions-legales.html">Mentions légales</a><a href="manifeste.html">Manifeste</a></div></div></div></footer>
+<script src="assets/site.js"></script>
+<script>
+// Draw org chart connector lines with SVG
+(function drawOrg(){ const canvas = document.getElementById("org-canvas"); const svg = document.getElementById("org-lines"); if(!canvas||!svg) return; // Connections: [parent-id, child-id] const connections = [ ["org-congres","org-bureau"], ["org-congres","org-commission"], ["org-congres","org-diaspora"], ["org-bureau","org-sg"], ["org-bureau","org-sections"], ["org-bureau","org-formation"], ["org-sg","org-eco"], ["org-sg","org-social"], ["org-sg","org-justice"], ["org-sg","org-gouv"], ["org-sg","org-jeunesse"], ]; function draw(){ const cr = canvas.getBoundingClientRect(); svg.setAttribute("viewBox",`0 0 ${cr.width} ${cr.height}`); svg.innerHTML = ""; const color = getComputedStyle(document.documentElement).getPropertyValue("--org-line").trim()||"#6db4ff"; connections.forEach(([pid,cid])=>{ const p = document.getElementById(pid); const c = document.getElementById(cid); if(!p||!c) return; const pr = p.getBoundingClientRect(); const cr2 = c.getBoundingClientRect(); const x1 = pr.left + pr.width/2 - cr.left; const y1 = pr.bottom - cr.top; const x2 = cr2.left + cr2.width/2 - cr.left; const y2 = cr2.top - cr.top; const my = (y1+y2)/2; const path = document.createElementNS("http://www.w3.org/2000/svg","path"); path.setAttribute("d",`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`); path.setAttribute("fill","none"); path.setAttribute("stroke",color); path.setAttribute("stroke-width","1.5"); path.setAttribute("opacity","0.55"); svg.appendChild(path); }); } window.addEventListener("load",draw); window.addEventListener("resize",draw); setTimeout(draw,100);
+})();
+</script>
+</body></html>
