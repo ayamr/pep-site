@@ -1215,3 +1215,44 @@ strong.join-title{
 .related-grid > .linked-card:nth-child(even) .card-cta{color:var(--line-services)}
 .related-grid > .linked-card{min-height:100%;}
 .related-grid > .linked-card p{margin-bottom:0;}
+
+/* Harmonisation du hero des quatre axes du programme.
+   La colonne latérale n'a plus de retrait interne : ses cartes suivent
+   exactement les mêmes limites que la carte principale. */
+.program-axis-page .hero-shell{
+  grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);
+  align-items:stretch;
+}
+.program-axis-page .hero-main{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.program-axis-page .hero-side{
+  padding:0;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  align-content:stretch;
+}
+.program-axis-page .hero-side .side-box{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+@media (max-width:1100px){
+  .program-axis-page .hero-shell{
+    grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+  }
+}
+@media (max-width:760px){
+  .program-axis-page .hero-shell{grid-template-columns:1fr}
+  .program-axis-page .hero-side{
+    grid-template-rows:auto;
+    gap:14px;
+    padding:0;
+  }
+  .program-axis-page .hero-main,
+  .program-axis-page .hero-side .side-box{height:auto}
+}
