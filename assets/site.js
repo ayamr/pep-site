@@ -111,6 +111,7 @@ if (t && p) {
       const a = document.createElement("a");
       a.href = link.getAttribute("href") || "#";
       a.textContent = label;
+      if (link.className) a.className = link.className;
       newCard.appendChild(a);
     }
   });
@@ -124,12 +125,103 @@ if (t && p) {
 /* ── Year ───────────────────────────────────────────── */
 document.querySelectorAll("[data-year]").forEach((y) => { y.textContent = new Date().getFullYear(); });
 
-/* ── Reveal on scroll ───────────────────────────────── */
-const ob = new IntersectionObserver(
-  (e) => e.forEach((x) => { if (x.isIntersecting) x.target.classList.add("visible"); }),
-  { threshold: 0.10 }
-);
-document.querySelectorAll(".reveal").forEach((el) => ob.observe(el));
+/* ── Stat number count-up ─────────────────────────────── */
+(function countUpStats() {
+  const targets = document.querySelectorAll(".stat-box strong, .metric-panel strong");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !targets.length) return;
+
+  const animate = (el) => {
+    const match = el.textContent.trim().match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const end = parseInt(match[1], 10);
+    const suffix = match[2] || "";
+    const duration = 700;
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * end) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  targets.forEach((el) => observer.observe(el));
+})();
+
+/* ── Reveal on scroll (staggered, motion-aware) ─────── */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+(function assignStagger() {
+  const groups = new Map();
+  document.querySelectorAll(".reveal").forEach((el) => {
+    const group = el.closest(
+      ".grid, .hero-shell, .hero-stat, .agir-reasons, .story-grid, .footer-top, .related-grid"
+    ) || el.parentElement;
+    const index = groups.get(group) || 0;
+    el.style.setProperty("--stagger", Math.min(index, 6));
+    groups.set(group, index + 1);
+  });
+})();
+
+if (prefersReducedMotion) {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
+} else {
+  const ob = new IntersectionObserver(
+    (e) => e.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("visible"); ob.unobserve(x.target); } }),
+    { threshold: 0.10 }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => ob.observe(el));
+}
+
+/* ── Header scroll state ─────────────────────────────── */
+const header = document.querySelector(".site-header");
+if (header) {
+  const syncHeaderScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  syncHeaderScroll();
+  window.addEventListener("scroll", syncHeaderScroll, { passive: true });
+}
+
+/* ── Sticky mobile join bar ──────────────────────────── */
+(function stickyJoinBar() {
+  const path = window.location.pathname;
+  const isCreole = /\/ht\//.test(path);
+  const isJoinPage = /\/adherer\.html$/.test(path);
+  if (isJoinPage) return;
+
+  const bar = document.createElement("div");
+  bar.className = "join-sticky";
+  bar.innerHTML = isCreole
+    ? `<span>Vin nan mouvman an.</span><a href="adherer.html">Adere</a>`
+    : `<span>Rejoignez le mouvement.</span><a href="adherer.html">Adhérer</a>`;
+  document.body.appendChild(bar);
+
+  const footer = document.querySelector(".footer");
+  let pastHero = false;
+  let footerVisible = false;
+
+  const sync = () => bar.classList.toggle("is-visible", pastHero && !footerVisible);
+
+  window.addEventListener("scroll", () => {
+    pastHero = window.scrollY > 480;
+    sync();
+  }, { passive: true });
+
+  if (footer) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { footerVisible = entry.isIntersecting; sync(); });
+    }, { threshold: 0.01 }).observe(footer);
+  }
+})();
 
 /* ── Google Forms submit handling ───────────────────── */
 document.querySelectorAll('.google-form').forEach((form) => {
