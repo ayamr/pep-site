@@ -1256,3 +1256,17 @@ strong.join-title{
   .program-axis-page .hero-main,
   .program-axis-page .hero-side .side-box{height:auto}
 }
+
+
+/* Collections de contenus évolutives */
+.content-collection{align-items:stretch}
+.content-collection .content-card{min-width:0}
+.content-card[hidden]{display:none!important}
+.content-more-wrap{display:flex;justify-content:center;margin-top:28px}
+.content-more{min-width:min(100%,280px)}
+.content-collection.is-expanded + .content-more-wrap .content-more::after{content:""}
+@media (max-width:760px){
+  .content-collection{grid-template-columns:1fr!important}
+  .content-more-wrap{margin-top:20px}
+  .content-more{width:100%}
+}

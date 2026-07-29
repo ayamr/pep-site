@@ -247,3 +247,34 @@ document.querySelectorAll('.google-form').forEach((form) => {
     }, 900);
   });
 });
+
+
+/* ── Collections extensibles : 3 cartes puis afficher tout ── */
+(function contentCollections(){
+  document.querySelectorAll('[data-content-collection]').forEach((collection) => {
+    const items = Array.from(collection.querySelectorAll('[data-content-item]'));
+    const initial = Number(collection.dataset.initialCount || 3);
+    const wrap = collection.nextElementSibling;
+    const button = wrap && wrap.querySelector('[data-content-more]');
+    if (!button || items.length <= initial) {
+      if (wrap) wrap.hidden = true;
+      return;
+    }
+    const isCreole = document.documentElement.lang === 'ht';
+    const collapseLabel = isCreole ? 'Montre mwens' : 'Afficher moins';
+    const expandLabel = isCreole ? `Montre tout ${items.length} kontni yo` : `Afficher les ${items.length} contenus`;
+    let expanded = false;
+    const sync = () => {
+      items.forEach((item, index) => { item.hidden = !expanded && index >= initial; });
+      collection.classList.toggle('is-expanded', expanded);
+      button.textContent = expanded ? collapseLabel : expandLabel;
+      button.setAttribute('aria-expanded', String(expanded));
+    };
+    button.addEventListener('click', () => {
+      expanded = !expanded;
+      sync();
+      if (!expanded) collection.scrollIntoView({behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start'});
+    });
+    sync();
+  });
+})();
