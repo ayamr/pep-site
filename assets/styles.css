@@ -1209,3 +1209,9 @@ strong.join-title{
 .pillars > .linked-card:nth-child(4n+4) .card-cta{color:var(--line-gouv)}
 .linked-card:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 @media (hover:none){.linked-card .card-cta{padding-top:14px;font-size:.98rem}}
+
+/* Navigation cards at the end of editorial and programme pages */
+.related-grid > .linked-card:nth-child(odd) .card-cta{color:var(--line-eco)}
+.related-grid > .linked-card:nth-child(even) .card-cta{color:var(--line-services)}
+.related-grid > .linked-card{min-height:100%;}
+.related-grid > .linked-card p{margin-bottom:0;}
